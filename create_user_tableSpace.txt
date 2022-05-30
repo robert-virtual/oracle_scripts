@@ -1,0 +1,15 @@
+sqlplus / as sysdba
+connect sys@hostname/XEPDB1 as sysdba;
+show con_name
+show pdbs
+alter session set container=XEPDB1;
+show con_name
+
+create tablespace mytablespace datafile 'mytablespace.dat' size 40M online;
+
+create user robert identified by my_password default tablespace mytablespace quota unlimited on mytablespace;
+
+grant create session, create table to castillo;
+
+connect robert/my_password@hostname/XEPDB1;
+   
